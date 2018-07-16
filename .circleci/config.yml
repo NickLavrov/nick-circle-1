@@ -25,6 +25,7 @@ jobs:
       - image: google/cloud-sdk
     steps:
       - checkout
+      - setup_remote_docker
       - run: echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
       - run: gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
       - run: ./deploy/deploy.sh api staging . . Dockerfile
