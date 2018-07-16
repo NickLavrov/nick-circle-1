@@ -24,12 +24,12 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: ./deploy/deploy.sh api staging . . Dockerfile
+      - run: sh ./deploy/deploy.sh api staging . . Dockerfile
 workflows:
   version: 2
   test-and-build-image:
     jobs:
       - build
       - push-image:
-        requires:
-          build
+          requires:
+            build
