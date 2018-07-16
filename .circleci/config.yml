@@ -28,6 +28,7 @@ jobs:
       - setup_remote_docker
       - run: echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
       - run: gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
+      - run: gcloud container clusters get-credentials gde-core-dev --zone us-east1-c --project gde-core-dev
       - run: ./deploy/deploy.sh api staging . . Dockerfile
 workflows:
   version: 2
