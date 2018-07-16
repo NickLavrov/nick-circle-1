@@ -21,10 +21,11 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test
   push-image:
-    machine: true
+    docker:
+      - image: google/cloud-sdk
     steps:
       - checkout
-      - run: sh ./deploy/deploy.sh api staging . . Dockerfile
+      - run: ./deploy/deploy.sh api staging . . Dockerfile
 workflows:
   version: 2
   test-and-build-image:
