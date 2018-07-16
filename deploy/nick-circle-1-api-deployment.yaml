@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nick-circle-1-api
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: nick-circle-1-api
+    spec:
+      containers:
+        - name: nick-circle-1-api
+          image: __IMAGE__
+          imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: nick-circle-1-api-secrets
+            - configMapRef:
+                name: nick-circle-1-api-configmap
+          ports:
+            - containerPort: 3000

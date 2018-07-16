@@ -1,0 +1,19 @@
+version: 2.3.0
+spec:
+  name: nick-circle-1
+  environments:
+    - name: prod
+      provider: gigster-network
+    - name: staging
+      provider: gigster-network
+  services:
+    - name: api
+      endpoint: api
+      servicePath: ./
+      containerPort: "3000"
+  providers:
+    - name: gigster-network
+      kind: gcp
+      spec:
+        region: "us-east1-c"
+        project_id: "gdedev-nick-circle-1"

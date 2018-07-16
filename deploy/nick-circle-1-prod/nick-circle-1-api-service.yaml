@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nick-circle-1-api
+spec:
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 3000
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    run: nick-circle-1-api
+  type: NodePort
